@@ -27,7 +27,6 @@ class YamlFileSpec(EnvironmentSpecBase):
     # Users must specify using `environment.yaml` with the `--environment-specifier`
     # option.
     detection_supported = False
-
     _environment = None
 
     extensions = {".yaml", ".yml"}
@@ -47,13 +46,6 @@ class YamlFileSpec(EnvironmentSpecBase):
         :return: True or False
         """
         if not self.filename:
-            return False
-
-        # Extract the file extension (e.g., '.txt' or '' if no extension)
-        _, file_ext = os.path.splitext(self.filename)
-
-        # Check if the file has a supported extension and exists
-        if not any(spec_ext == file_ext for spec_ext in YamlFileSpec.extensions):
             return False
 
         try:

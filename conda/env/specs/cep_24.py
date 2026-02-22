@@ -22,7 +22,6 @@ log = getLogger(__name__)
 
 class Cep24YamlFileSpec(EnvironmentSpecBase):
     _environment = None
-    extensions = {".yaml", ".yml"}
 
     def __init__(self, filename: str | None = None, **kwargs):
         self.filename = filename
@@ -38,13 +37,6 @@ class Cep24YamlFileSpec(EnvironmentSpecBase):
         :return: True or False
         """
         if not self.filename:
-            return False
-
-        # Extract the file extension (e.g., '.txt' or '' if no extension)
-        _, file_ext = os.path.splitext(self.filename)
-
-        # Check if the file has a supported extension and exists
-        if file_ext.lower() not in self.extensions:
             return False
 
         try:
